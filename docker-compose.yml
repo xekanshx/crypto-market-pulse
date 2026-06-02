@@ -1,0 +1,49 @@
+services:
+  db:
+    image: postgres:15
+    container_name: crypto_db
+    environment:
+      POSTGRES_USER: crypto_user
+      POSTGRES_PASSWORD: crypto_pass
+      POSTGRES_DB: crypto_data
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  superset:
+    image: apache/superset:latest
+    container_name: superset
+    ports:
+      - "8088:8088"
+    environment:
+      SUPERSET_SECRET_KEY: ${SUPERSET_SECRET_KEY:?SUPERSET_SECRET_KEY is required}
+    command: >
+      sh -c "superset db upgrade &&
+             superset init &&
+             superset run -h 0.0.0.0 -p 8088"
+    depends_on:
+      - db
+
+  fetcher:
+    build:
+      context: ./data_fetcher
+    container_name: crypto_fetcher
+    environment:
+      DB_HOST: db
+      DB_USER: crypto_user
+      DB_PASSWORD: crypto_pass
+      DB_NAME: crypto_data
+      DB_PORT: 5432
+      FETCH_HOUR: 0
+      FETCH_MINUTE: 5
+      TOP_COINS_LIMIT: 20
+      VS_CURRENCY: usd
+      REQUEST_TIMEOUT: 30
+      LOG_LEVEL: INFO
+    depends_on:
+      - db
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
