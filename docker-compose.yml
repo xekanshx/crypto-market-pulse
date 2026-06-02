@@ -17,10 +17,9 @@ services:
     ports:
       - "8088:8088"
     environment:
-      SUPERSET_SECRET_KEY: crypto_market_pulse_secret_key
+      SUPERSET_SECRET_KEY: ${SUPERSET_SECRET_KEY:?SUPERSET_SECRET_KEY is required}
     command: >
       sh -c "superset db upgrade &&
-             superset fab create-admin --username xekanshx --firstname Ekansh --lastname User --email ekansh1660@gmail.com --password THOR1660 || true &&
              superset init &&
              superset run -h 0.0.0.0 -p 8088"
     depends_on:

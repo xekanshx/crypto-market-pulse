@@ -6,6 +6,9 @@ from typing import Any, Dict, List
 import psycopg2
 import requests
 from apscheduler.schedulers.blocking import BlockingScheduler
+from psycopg2.extras import execute_values
+from requests.adapters import HTTPAdapter
+from urllib3.util.retry import Retry
 
 logging.basicConfig(
     level=os.getenv("LOG_LEVEL", "INFO"),
@@ -30,7 +33,7 @@ SCHEDULE_MINUTE = int(os.getenv("FETCH_MINUTE", "5"))
 REQUEST_TIMEOUT = int(os.getenv("REQUEST_TIMEOUT", "30"))
 
 
-def get_connection():
+def get_db_connection():
     return psycopg2.connect(**DB_CONFIG)
 
 
@@ -58,13 +61,22 @@ def ensure_table() -> None:
     );
     """
 
-    with get_connection() as conn:
+    with get_db_connection() as conn:
         with conn.cursor() as cur:
             cur.execute(create_table_sql)
         conn.commit()
 
 
 def fetch_crypto_data() -> List[Dict[str, Any]]:
+    retry = Retry(
+        total=3,
+        backoff_factor=1,
+        status_forcelist=(429, 500, 502, 503, 504),
+        allowed_methods=("GET",),
+    )
+    session = requests.Session()
+    session.mount("https://", HTTPAdapter(max_retries=retry))
+
     params = {
         "vs_currency": VS_CURRENCY,
         "order": "market_cap_desc",
@@ -73,7 +85,7 @@ def fetch_crypto_data() -> List[Dict[str, Any]]:
         "sparkline": "false",
         "price_change_percentage": "24h",
     }
-    response = requests.get(COINGECKO_URL, params=params, timeout=REQUEST_TIMEOUT)
+    response = session.get(COINGECKO_URL, params=params, timeout=REQUEST_TIMEOUT)
     response.raise_for_status()
     data = response.json()
     if not isinstance(data, list):
@@ -102,9 +114,7 @@ def insert_crypto_data(data: List[Dict[str, Any]]) -> None:
         circulating_supply,
         total_supply,
         max_supply
-    ) VALUES (
-        %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s
-    )
+    ) VALUES %s
     ON CONFLICT (fetch_date, coin_id) DO UPDATE SET
         fetched_at = EXCLUDED.fetched_at,
         symbol = EXCLUDED.symbol,
@@ -147,9 +157,9 @@ def insert_crypto_data(data: List[Dict[str, Any]]) -> None:
         logger.warning("No valid coin rows received; skipping insert")
         return
 
-    with get_connection() as conn:
+    with get_db_connection() as conn:
         with conn.cursor() as cur:
-            cur.executemany(insert_sql, rows)
+            execute_values(cur, insert_sql, rows)
         conn.commit()
 
     logger.info("Stored %s crypto records for %s", len(rows), fetch_date)
