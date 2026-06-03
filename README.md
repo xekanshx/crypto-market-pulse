@@ -112,7 +112,10 @@ The project uses a multi-container Docker architecture:
 
 <img width="1106" height="746" alt="image" src="https://github.com/user-attachments/assets/de5b424a-e508-44ca-a6a7-e22d29532cb4" />
 
-
+Insights:
+- Bitcoin and Ethereum showed comparatively stable long-term price movement relative to smaller-cap assets.
+- Solana demonstrated higher momentum swings, indicating increased short-term volatility.
+- Normalized rolling averages helped compare cross-asset trends despite large price-scale differences.
 ---
 
 ## Trading Volume Spike Detection
