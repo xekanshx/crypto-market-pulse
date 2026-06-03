@@ -110,7 +110,8 @@ The project uses a multi-container Docker architecture:
 * Normalized cross-asset comparison
 * Time-series smoothing for trend visualization
 
-<img width="560" height="400" alt="image" src="https://github.com/user-attachments/assets/baaec545-4661-4977-a71f-88c4d394d2a0" />
+<img width="1106" height="746" alt="image" src="https://github.com/user-attachments/assets/de5b424a-e508-44ca-a6a7-e22d29532cb4" />
+
 
 ---
 
@@ -120,7 +121,8 @@ The project uses a multi-container Docker architecture:
 * Compares current volume against rolling 30-day baselines
 * Identifies unusual market activity patterns
 
-<img width="784" height="590" alt="image" src="https://github.com/user-attachments/assets/524d5582-f225-49c7-b1d7-814d9ef5d74d" />
+<img width="1104" height="748" alt="image" src="https://github.com/user-attachments/assets/41c18639-2a3b-4862-8674-821b986028c8" />
+
 
 ---
 
