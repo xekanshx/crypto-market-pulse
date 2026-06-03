@@ -131,7 +131,8 @@ The project uses a multi-container Docker architecture:
 * Calculates relative price volatility using statistical measures
 * Uses coefficient of variation for normalized cross-asset comparison
 
-<img width="560" height="400" alt="image" src="https://github.com/user-attachments/assets/e50d46c2-c368-4d39-b72c-4456927e6bcf" />
+<img width="1093" height="761" alt="image" src="https://github.com/user-attachments/assets/d05c2c67-d79c-46b4-a815-3636309d9d10" />
+
 
 ---
 
@@ -140,7 +141,8 @@ The project uses a multi-container Docker architecture:
 * Tracks market cap dominance trends over time
 * Compares relative market share across major cryptocurrencies
 
-<img width="560" height="400" alt="image" src="https://github.com/user-attachments/assets/73b75050-2f20-450d-9ef8-ab1e845b63d3" />
+<img width="1101" height="741" alt="image" src="https://github.com/user-attachments/assets/4bbfbf17-db23-4b30-b97a-d7f0d38e8dc1" />
+
 
 ---
 
