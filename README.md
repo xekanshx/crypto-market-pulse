@@ -126,7 +126,10 @@ Insights:
 
 <img width="1104" height="748" alt="image" src="https://github.com/user-attachments/assets/41c18639-2a3b-4862-8674-821b986028c8" />
 
-
+Insights:
+- Several mid-cap assets experienced trading volume spikes exceeding 10× their historical baseline.
+- High spike ratios suggest periods of speculative activity and sudden liquidity inflows.
+- Rolling volume baselines helped identify abnormal market participation patterns.
 ---
 
 ## Volatility Analytics
@@ -136,7 +139,10 @@ Insights:
 
 <img width="1093" height="761" alt="image" src="https://github.com/user-attachments/assets/d05c2c67-d79c-46b4-a815-3636309d9d10" />
 
-
+Insights:
+- Smaller-cap cryptocurrencies exhibited significantly higher relative volatility than large-cap assets.
+- Bitcoin and Ethereum maintained comparatively lower volatility percentages over the 90-day window.
+- Stablecoins were excluded to avoid distortion in comparative volatility analysis.
 ---
 
 ## Market Dominance Analysis
@@ -146,7 +152,10 @@ Insights:
 
 <img width="1101" height="741" alt="image" src="https://github.com/user-attachments/assets/4bbfbf17-db23-4b30-b97a-d7f0d38e8dc1" />
 
-
+Insights:
+- Bitcoin maintained relatively stable market dominance throughout the observed period.
+- Solana and Binance Coin showed noticeable fluctuations in relative market share.
+- Dominance trends reflected changing investor concentration across major crypto assets.
 ---
 
 ## Gainers vs Losers Analysis
@@ -156,7 +165,10 @@ Insights:
 
 <img width="1092" height="491" alt="image" src="https://github.com/user-attachments/assets/6cf20d73-7bd9-4907-813f-10106190800b" />
 
-
+Insights:
+- Short-term returns varied significantly across assets, highlighting the highly dynamic nature of crypto markets.
+- Several assets showed strong weekly momentum but weaker monthly performance, indicating short-lived rallies.
+- Comparative return analysis helped identify both sustained and temporary market movements.
 ---
 
 ## Historical Performance Window Analysis
@@ -166,7 +178,10 @@ Insights:
 
 <img width="1119" height="771" alt="image" src="https://github.com/user-attachments/assets/abe3e75a-c5b2-496e-a6b8-a9039dab8b69" />
 
-
+Insights:
+- Some assets experienced extreme short-term price swings exceeding 300% within 7-day windows.
+- High variance in performance windows reflects speculative behavior and rapid sentiment shifts in crypto markets.
+- Window-based analysis highlighted historical periods of exceptional momentum and drawdowns.
 ---
 
 # SQL Concepts Used
