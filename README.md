@@ -151,7 +151,8 @@ The project uses a multi-container Docker architecture:
 * Calculates 7-day and 30-day returns
 * Identifies strongest and weakest performing assets
 
-<img width="560" height="400" alt="image" src="https://github.com/user-attachments/assets/447085cc-3ae4-47c4-84ed-4aec1ce0c28c" />
+<img width="1092" height="491" alt="image" src="https://github.com/user-attachments/assets/6cf20d73-7bd9-4907-813f-10106190800b" />
+
 
 ---
 
@@ -160,7 +161,8 @@ The project uses a multi-container Docker architecture:
 * Detects best and worst 7-day performance windows
 * Uses SQL window functions and ranking operations
 
-<img width="452" height="400" alt="image" src="https://github.com/user-attachments/assets/18e4207b-8aaf-4fb9-929b-9e2f7ff71120" />
+<img width="1119" height="771" alt="image" src="https://github.com/user-attachments/assets/abe3e75a-c5b2-496e-a6b8-a9039dab8b69" />
+
 
 ---
 
