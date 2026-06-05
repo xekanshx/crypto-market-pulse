@@ -73,7 +73,9 @@ PostgreSQL Database
 ↓
 
 SQL Analytics Layer
+
 ↓
+
 Apache Superset Dashboard
 
 ---
