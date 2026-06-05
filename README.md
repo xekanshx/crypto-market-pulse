@@ -57,13 +57,21 @@ The dashboard provides insights into:
 Example Flow:
 
 CoinGecko API
+
 ↓
+
 Historical Backfill Pipeline
+
 ↓
+
 Daily Automated ETL Pipeline
+
 ↓
+
 PostgreSQL Database
+
 ↓
+
 SQL Analytics Layer
 ↓
 Apache Superset Dashboard
